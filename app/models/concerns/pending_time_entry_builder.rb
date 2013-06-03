@@ -3,7 +3,7 @@ module PendingTimeEntryBuilder
 
   included do
     delegate :description, :estimated_hours,
-      to: :
+      to: :integration
   end
 
   def build_pending_time_entry *args

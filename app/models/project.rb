@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   #
   # So would one GitHub commit, or one email sent to a client
   class Activity < ActiveRecord::Base
-    include ActivityWindow, PendingTimeEntryBuilder, Workable
+    include ActivityWindow, Integratable, PendingTimeEntryBuilder, Workable
 
     belongs_to :project, touch: true
     belongs_to :time_entry
@@ -34,41 +34,41 @@ class Project < ActiveRecord::Base
   end
 
   class TimeEntry < ActiveRecord::Base
-    include Workable
+    include AASM, Workable
 
     after_create :tie_to_overlapping_time_entries, if: :pending?
 
     belongs_to :project, touch: true
     has_many :activities
 
-    locked = -> do
-      attr_readonly :description, :hours
-    end
+    aasm do
+      locked = -> do
+        attr_readonly :description, :hours
+      end
 
-    aasm_initial_state :pending
+      state :committed, &locked
+      state :confirmed, &locked
+      state :ignored
+      state :pending, initial: true
 
-    aasm_state :committed, &locked
-    aasm_state :confirmed, &locked
-    aasm_state :ignored
-    aasm_state :pending
+      event :confirm do
+        transitions to: :confirmed, from: [:ignored, :pending]
+      end
 
-    aasm_event :confirm do
-      transitions to: :confirmed, from: [:ignored, :pending]
-    end
+      # Once the worker has confirmed the entry,
+      # we need to copy it over to the actual time-tracking software.
+      # We want to be able to reflect this in the UI,
+      # and re-try the commit if the time-tracking software glitches,
+      # so this is a separate state/event, here
+      event :commit do
+        transitions to: :committed, from: :confirmed
+      end
 
-    # Once the worker has confirmed the entry,
-    # we need to copy it over to the actual time-tracking software.
-    # We want to be able to reflect this in the UI,
-    # and re-try the commit if the time-tracking software glitches,
-    # so this is a separate state/event, here
-    aasm_event :commit do
-      transitions to: :committed, from: :confirmed
-    end
-
-    aasm_event :ignore do
-      # For now, you can't transition from "committed" entries,
-      # because we would have to go yank the entrys out of the time-tracking software
-      transitions to: :ignored, from: [:confirmed, :pending]
+      event :ignore do
+        # For now, you can't transition from "committed" entries,
+        # because we would have to go yank the entrys out of the time-tracking software
+        transitions to: :ignored, from: [:confirmed, :pending]
+      end
     end
 
   protected
