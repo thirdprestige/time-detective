@@ -11,10 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130601174142) do
+ActiveRecord::Schema.define(version: 20130601174337) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "project_activities", force: true do |t|
+    t.integer  "project_id",            null: false
+    t.integer  "project_time_entry_id"
+    t.integer  "worker_id",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "project_identities", force: true do |t|
+    t.integer  "project_id", null: false
+    t.string   "identifier", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "project_time_entries", force: true do |t|
+    t.integer  "project_id",                      null: false
+    t.integer  "worker_id",                       null: false
+    t.float    "hours",       default: 0.0,       null: false
+    t.text     "description"
+    t.string   "state",       default: "pending", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects", force: true do |t|
+    t.boolean  "active",     default: true, null: false
+    t.string   "name"
+    t.integer  "account_id",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
