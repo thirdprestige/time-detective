@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
     belongs_to :time_entry
 
     scope :potentially_unbilled_work, -> {
-      where(time_entry_id: nil)
+      where(project_time_entry_id: nil)
     }
 
     def overlapping_time_entries
@@ -36,12 +36,12 @@ class Project < ActiveRecord::Base
   class TimeEntry < ActiveRecord::Base
     include AASM, Workable
 
-    after_create :tie_to_overlapping_time_entries, if: :pending?
+    after_create :tie_to_overlapping_activities, if: :pending?
 
     belongs_to :project, touch: true
-    has_many :activities
+    has_many :activities, foreign_key: :project_time_entry_id
 
-    aasm do
+    aasm column: :state do
       locked = -> do
         attr_readonly :description, :hours
       end
@@ -73,8 +73,8 @@ class Project < ActiveRecord::Base
 
   protected
 
-    def tie_to_overlapping_time_entries
-      activities.window.potentially_unbilled_work.update_all project_time_entry_id: id
+    def tie_to_overlapping_activities
+      project.activities.potentially_unbilled_work.update_all project_time_entry_id: id
     end
   end
 
