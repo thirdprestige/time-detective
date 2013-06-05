@@ -74,7 +74,10 @@ class Project < ActiveRecord::Base
   protected
 
     def tie_to_overlapping_activities
-      project.activities.potentially_unbilled_work.update_all project_time_entry_id: id
+      project.activities.
+        potentially_unbilled_work.
+        window_for(self).
+        update_all project_time_entry_id: id
     end
   end
 
