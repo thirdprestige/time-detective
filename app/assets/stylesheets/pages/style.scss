@@ -19,12 +19,35 @@
   width: 51px;
 }
 .facebook {
-  background-image: image-url('facebook_small.gif');
+  background-image: image-url('pages/facebook_small.png');
 }
 .twitter {
-  background-image: image-url('twitter_small.gif');
+  background-image: image-url('pages/twitter_small.png');
 }
 
 .footer {
   color: #424242;
+}
+
+.element-border {
+  border-radius: 2px;
+  border: solid 1px rgba(255, 255, 255, 0.2);
+}
+
+.arrow {
+  margin-left: 10px;
+  &.right {
+    float: right;
+    margin-right: 10px;
+  }
+
+  .carrot {
+    font-size: 2.5em;
+  }
+
+  .dot {
+    font-size: 5em;
+    line-height: 0.4em;
+    display: inline-block;
+  }
 }
