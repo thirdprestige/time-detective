@@ -1,0 +1,40 @@
+#landing {
+  background-image: image-url('pages/landing/background.jpg');
+  background-attachment: scroll;
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+  background-color: black;
+  
+  #sign_up {
+    p { display: inline; float: left; margin-left: 10px; }
+    form { display: inline-block; float: right; margin-right: 10px; }
+  }
+  
+  #hero_banner {
+    background-image: image-url('pages/landing/hero_banner.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%auto;
+    display: block;
+    
+    height: 4em;
+    min-width: 100px;
+    width: 90%;
+    max-width: 500px;
+  }
+  
+  #portrait {
+    background-image: image-url('pages/landing/detective.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%auto;
+    display: block;
+    
+    height: 28em;
+    min-width: 100px;
+    width: 90%;
+    max-width: 260px;
+  }
+  
+}

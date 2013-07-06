@@ -1,6 +1,6 @@
 Detective::Application.routes.draw do
-  get "home/index"
+  get "home/landing"
   devise_for :users
   
-  root :to => "home#index"
+  root :to => "home#landing"
 end

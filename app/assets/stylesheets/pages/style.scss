@@ -1,0 +1,30 @@
+.align-left {
+  margin-right: auto;
+  text-align: left;
+}
+.align-center {
+  margin: 0 auto;
+  text-align: center;
+}
+.align-right {
+  margin-left: auto;
+  text-align: right;
+}
+
+.social_small {
+  background-repeat: no-repeat;
+  display: block;
+
+  height: 50px;
+  width: 51px;
+}
+.facebook {
+  background-image: image-url('facebook_small.gif');
+}
+.twitter {
+  background-image: image-url('twitter_small.gif');
+}
+
+.footer {
+  color: #424242;
+}
