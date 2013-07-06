@@ -17,22 +17,59 @@
     background: linear-gradient(to bottom,  #2b2b2b 14%,#1c1c1c 42%,#111111 71%,#131313 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b2b2b', endColorstr='#131313',GradientType=0 ); /* IE6-9 */
     
-    p { display: inline; float: left; }
-    form { display: inline-block; float: right; }
+    p {
+      display: inline; 
+      float: left;
+      font-size: 13px;
+      font-style: italic;
+    }
+    form {
+      color: #9393a3;
+      display: inline-block; 
+      float: right;
+      font-style: italic;
+    }
   }
   
   #content {
     background-color: rgba(0, 0, 0, 0.8);
+    color: #bababa;
+    padding: 6px 36px;
+
+    h2 { 
+      font-size: 16px;
+      font-weight: normal;
+      font-style: italic;
+    }
     
-    p {
-      padding: 3px 10px;
+    #ribbon {
+      background-image: image-url('pages/landing/ribbon.png');
+      background-size: auto 100%;
+      display: block;
+      position: absolute;
+      margin-top: -16px;
+      margin-left: -47px;
+      
+      height: 14em;
+      width: 14em;
+      
+      p {
+        color: black;
+        position: relative;
+        text-transform: uppercase;
+        top: 23px;
+
+        transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg); /* IE 9 */
+        -webkit-transform: rotate(-45deg); /* Safari and Chrome */
+      }
     }
   
     #hero_banner {
       background-image: image-url('pages/landing/hero_banner.png');
       background-position: center;
       background-repeat: no-repeat;
-      background-size: 100% auto;
+      background-size: 78% auto;
       display: block;
     
       height: 4em;
@@ -44,9 +81,8 @@
   
   #contact {
     background-color: rgba(30, 27, 31, 0.9);
-    p {
-      padding: 3px 10px;
-    }
+    
+    p { padding: 3px 10px; }
   }
   
   #portrait {

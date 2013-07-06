@@ -1,5 +1,5 @@
-%div.row-fluid#sign_up
-  %div.container-fluid
+%div.row#sign_up
+  %div.container.align-center
     %div.span12
       %br
       %p Lorem ipsum dolor sit amet, consectetur.
@@ -13,19 +13,26 @@
         %button.btn{:type => "submit"} submit
 %br
 
-%div.container-fluid
+%div.container
   %div.row-fluid
 
     %div.span1
       %div.row-fluid
-        %span.social_small.facebook        
-      %br
+        %span.social_small.facebook.align-center
       %div.row-fluid
-        %span.social_small.twitter
+        %span.social_small.twitter.align-center
         
     %div.span7.element-border#content
+      %div#ribbon
+        %p Coming soon!
+      
       %h1
         %span.align-center#hero_banner
+      
+      %hr
+      %h2.hr.hr-block.align-center
+        No hour lost.
+      %hr
       %br
     
       %p All’s mayhem, madness, and muck on your computer. You know the troubles: timesheets mysteriously disappearing and project notes vanishing into thin air. 
@@ -53,7 +60,7 @@
       
       %div.row-fluid.element-border#portrait
         
-  %div.row-fluid.footer.align-center
+  %div.row-fluid.copyright.align-center
     %br
     &copy; 2013 Third Prestige LLC la la dandelions bird
   %br
