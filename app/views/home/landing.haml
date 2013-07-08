@@ -10,7 +10,8 @@
         %label
           Email
           %input.input-large
-        %button.btn{:type => "submit"} submit
+        %button.btn{:type => "submit"}
+          %p submit
 %br
 
 %div.container
@@ -18,13 +19,15 @@
 
     %div.span1
       %div.row-fluid
-        %span.social_small.facebook.align-center
+        %a{:href => "https://www.facebook.com/ThirdPrestige"}
+          %span.social_small.facebook.align-center
       %div.row-fluid
-        %span.social_small.twitter.align-center
+        %a{:href => "https://twitter.com/ThirdPrestigeCo"}
+          %span.social_small.twitter.align-center
         
     %div.span7.element-border#content
       %div#ribbon
-        %p Coming soon!
+        //%p Coming soon!
       
       %h1
         %span.align-center#hero_banner
@@ -54,13 +57,16 @@
       %div.row-fluid.element-border#contact
         %br
         %p Our private eye investigation can recover valuable billables for your company at a mere $300 per month. 
-        %p Contact us at: hello@thirdprestige.com or  512.394.4105  to learn more about Time Detective today. 
+        %p.small
+          Contact us at: hello@thirdprestige.com or
+          %strong 512.394.4105
+          to learn more about Time Detective today. 
         %br
       %br
       
       %div.row-fluid.element-border#portrait
         
-  %div.row-fluid.copyright.align-center
+  -#%div.row-fluid.copyright.align-center
     %br
     &copy; 2013 Third Prestige LLC la la dandelions bird
   %br
