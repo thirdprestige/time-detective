@@ -1,15 +1,6 @@
-// Align class' //
-.align-left {
-  margin-right: auto;
-  text-align: left;
-}
-.align-center {
-  margin: 0 auto;
-  text-align: center;
-}
-.align-right {
-  margin-left: auto;
-  text-align: right;
+.overlay {
+  background-image: image-url('pages/landing/smoke.png');
+  background-size: 100% 100%;
 }
 
 .element-border {
@@ -26,12 +17,14 @@
 
   .carrot {
     font-size: 2.5em;
+    letter-spacing: -3px;
   }
 
   .dot {
+    display: inline-block;
     font-size: 5em;
     line-height: 0.4em;
-    display: inline-block;
+    padding: 0 7px;
   }
 }
 
@@ -86,4 +79,18 @@ input {
 // Copyright //
 .copyright {
   color: #424242;
+}
+
+// Align class' //
+.align-left {
+  margin-right: auto;
+  text-align: left;
+}
+.align-center {
+  margin: 0 auto;
+  text-align: center;
+}
+.align-right {
+  margin-left: auto;
+  text-align: right;
 }

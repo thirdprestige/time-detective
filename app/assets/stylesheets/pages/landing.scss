@@ -4,7 +4,7 @@
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: center bottom;
-  background-color: black;
+  background-color: #171717;
   color: #c4bfbf;
   font-family: Georgia;
   
@@ -17,21 +17,27 @@
     background: -ms-linear-gradient(top,  #2b2b2b 14%,#1c1c1c 42%,#111111 71%,#131313 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #2b2b2b 14%,#1c1c1c 42%,#111111 71%,#131313 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b2b2b', endColorstr='#131313',GradientType=0 ); /* IE6-9 */
+
+    padding-top: 1.2em;
+    padding-bottom: 1.5em;
     
     p {
-      display: inline; 
+      display: inline;
       float: left;
-      font-size: 11px;
+      font-size: 13px;
       font-style: italic;
-    }
-    label {
-      font-size: 12px;
+      margin-top: 6px;
+      margin-left: 4.8em;
     }
     form {
-      color: #9393a3;
-      display: inline-block; 
+      color: #d1c8c8;
+      display: inline-block;
       float: right;
       font-style: italic;
+      margin-bottom: 0px;
+
+      label { font-size: 12px; }
+      input { width: 170px; }
     }
     .btn {
       background-image: url(/assets/pages/landing/submit.png);
@@ -39,6 +45,7 @@
       background-size: 100% auto;
       border: none;
       height: 33px;
+      margin-right: 0px;
       outline: none;
       width: 7em;
       
@@ -53,20 +60,30 @@
     }
   }
   
+  #social {
+    width: 30px;
+  }
+  
   #content {
     background-color: rgba(0, 0, 0, 0.8);
-    color: #727472;
+    color: #d1c8c8;
     padding: 6px 36px;
+    width: 500px;
 
     h2 {
       color: #c4bfbf;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: normal;
       font-style: italic;
     }
     
+    p {
+      font-size: 17px;
+      line-height: 24px;
+    }
+    
     #ribbon {
-      background-image: image-url('pages/landing/ribbon_text.png');
+      background-image: image-url('pages/landing/ribbon.png');
       background-size: auto 100%;
       display: block;
       position: absolute;
@@ -94,37 +111,47 @@
       background-repeat: no-repeat;
       background-size: 78% auto;
       display: block;
+      margin-right: 8px;
     
-      height: 4em;
+      height: 5em;
       min-width: 100px;
       width: 90%;
       max-width: 500px;
     }
   }
   
-  #contact {
-    background-color: rgba(30, 27, 31, 0.9);
+  #private_eye {
+    display: block;
+    margin-left: 4em;
+    position: relative;
+    width: 250px;
     
-    p {
-      color: #c4bfbf;
-      font-size: 14px;
-      font-style: italic;
-      padding: 3px 10px;
-      &.small {
-        font-size: 12px;
-        strong { font-style: normal; }
+    #contact {
+      background-color: rgba(30, 27, 31, 0.9);
+    
+      p {
+        color: #c4bfbf;
+        font-size: 18px;
+        font-style: italic;
+        padding: 3px 18px;
+        &.small {
+          font-size: 14px;
+          line-height: 18px;
+          padding-bottom: 0px;
+          strong { font-style: normal; }
+        }
       }
     }
-  }
   
-  #portrait {
-    background-image: image-url('pages/landing/detective.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    display: block;
+    #portrait {
+      background-image: image-url('pages/landing/detective.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+      display: block;
     
-    height: 28em;
+      height: 30.2em;
+    }
   }
   
 }
