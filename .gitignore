@@ -20,4 +20,5 @@ config/database.yml
 # Nathaniel dislikes RVM
 .rvmrc
 .ruby-gemset
-.ruby-version
+.ruby-versionbin/
+bin/
