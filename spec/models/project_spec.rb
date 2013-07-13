@@ -15,6 +15,16 @@ describe Project do
         end
       end.should raise_error(ActiveRecord::RecordInvalid)
     end
+
+    # See note in Workable re. email addresses, users not tied to accounts,
+    # and bypassing validations
+    it 'should allow a worker to be associated via his email address' do
+      -> do
+        subject.activities.create! do |activity|
+          activity.worker_email_address = 'hello@example.com'
+        end
+      end.should change(User, :count).by(1)
+    end
   end
 
   describe Project::TimeEntry do

@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   #
   # So would one GitHub commit, or one email sent to a client
   class Activity < ActiveRecord::Base
-    include ActivityWindow, Integratable, PendingTimeEntryBuilder, Workable
+    include Integratable, PendingTimeEntryBuilder, Workable
 
     belongs_to :project, touch: true
     belongs_to :time_entry
@@ -16,11 +16,7 @@ class Project < ActiveRecord::Base
       where(project_time_entry_id: nil)
     }
 
-    def overlapping_time_entries
-      project.time_entries.
-        where(created_at: created_at.within(4.hours)).
-        where(worker_id: worker_id)
-    end
+    validates_uniqueness_of :external_identifier, scope: :project_id
   end
 
   # A Project will have many separate IDs through each integration,
@@ -30,7 +26,15 @@ class Project < ActiveRecord::Base
   # several Heroku apps belonging to the Brigham project, or
   # several Dropbox folders
   class Identity < ActiveRecord::Base
+    include Integratable::Identifiable
+
+    belongs_to :integration, polymorphic: true
     belongs_to :project
+
+    identifies :repository, :github
+    identifies :server, :heroku
+
+    validates_uniqueness_of :identifier, scope: [:integration_id, :integration_type]
   end
 
   class TimeEntry < ActiveRecord::Base
@@ -66,7 +70,7 @@ class Project < ActiveRecord::Base
 
       event :ignore do
         # For now, you can't transition from "committed" entries,
-        # because we would have to go yank the entrys out of the time-tracking software
+        # because we would have to go yank the entries out of the time-tracking software
         transitions to: :ignored, from: [:confirmed, :pending]
       end
     end
@@ -84,8 +88,11 @@ class Project < ActiveRecord::Base
   belongs_to :account
 
   with_options dependent: :destroy do |p|
-    p.has_many :activities, extend: ActivityWindow
+    p.with_options extend: ActivityWindow do |active|
+      active.has_many :activities
+      active.has_many :time_entries
+    end
+
     p.has_many :identities
-    p.has_many :time_entries
   end
 end

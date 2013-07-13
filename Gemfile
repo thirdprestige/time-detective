@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'aasm'
+gem 'attr_encrypted'
+gem 'cancan'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'jquery-rails'

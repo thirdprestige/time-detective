@@ -11,17 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130603235126) do
+ActiveRecord::Schema.define(version: 20130605022921) do
 
   create_table "accountings", force: true do |t|
     t.integer  "account_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "confirmed_at"
   end
 
   create_table "accounts", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "integrations", force: true do |t|
+    t.integer  "account_id"
+    t.string   "type"
+    t.text     "secret_encrypted"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -32,13 +41,16 @@ ActiveRecord::Schema.define(version: 20130603235126) do
     t.integer  "worker_id",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
+    t.text     "external_identifier"
   end
 
   create_table "project_identities", force: true do |t|
-    t.integer  "project_id", null: false
-    t.string   "identifier", null: false
+    t.integer  "project_id",  null: false
+    t.string   "identifier",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "integration"
   end
 
   create_table "project_time_entries", force: true do |t|

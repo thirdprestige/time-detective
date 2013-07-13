@@ -35,3 +35,13 @@ he needs to check over.
 
 When any entries have been pending > 48 hours, or there are pending entries on Friday morning, we
 send a phone call to the worker.
+
+USER EXPERIENCE
+===============
+
+There is a lot of initial set up for an administrator to do.
+
+First, we have to tie in all our 3rd party apps: Harvest, GitHub, Heroku.
+
+Second, we need to tie each project together across all of those apps,
+which means we have to continually pull in all of the projects across each of those integrations.
