@@ -1,21 +1,21 @@
 source 'https://rubygems.org'
 
 gem 'aasm'
+gem 'bourbon', git: 'https://github.com/thoughtbot/bourbon.git'
 gem 'devise'
 gem 'jquery-rails'
+gem 'haml'
 gem 'pg'
-gem 'rails', '4.0.0.rc2'
+gem 'rails_admin'
+gem 'rails', '~> 4.0'
 gem 'turbolinks'
 gem 'unicorn'
-gem 'haml'
 
 group :assets do
-  gem 'sass-rails', '~> 4.0.0.rc2'
-  gem 'coffee-rails', '~> 4.0.0'
-  gem 'uglifier', '>= 1.3.0'
-  gem 'compass-rails'
-  gem 'bourbon'
   gem 'bootstrap-sass'
+  gem 'coffee-rails', '~> 4.0'
+  gem 'compass-rails'
+  gem 'uglifier', '>= 1.3.0'
 end
 
 group :development, :test do

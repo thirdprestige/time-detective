@@ -9,10 +9,11 @@
 }
 
 .arrow {
-  margin-left: 10px;
+  cursor: pointer;
+  // padding: 10px;
+
   &.right {
     float: right;
-    margin-right: 10px;
   }
 
   .carrot {
@@ -32,6 +33,7 @@ hr, .hr {
   border-bottom: none;
   border-color: #727472;
   margin: 5px 0;
+
   &.hr-block {
     border-top: solid 1px #727472;
     border-bottom: solid 1px #727472;
