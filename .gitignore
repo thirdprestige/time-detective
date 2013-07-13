@@ -15,3 +15,10 @@
 /log/*.log
 /tmp
 config/database.yml
+.DS_Store
+
+# Nathaniel dislikes RVM
+.rvmrc
+.ruby-gemset
+.ruby-versionbin/
+bin/
