@@ -24,30 +24,30 @@
         %div.row
           %a{:href => "https://twitter.com/ThirdPrestigeCo"}
             %span.social_small.twitter.align-center
-      
+
       %div.span7.element-border#content
         %div#ribbon
           / %p Coming soon!
-  
+
         %h1
           %span.align-center#hero_banner
-  
+
         %hr
         %h2.hr.hr-block.align-center
           No hour lost.
         %hr
         %br
 
-        %p All’s mayhem, madness, and muck on your computer. You know the troubles: timesheets mysteriously disappearing and project notes vanishing into thin air. 
+        %p All’s mayhem, madness, and muck on your computer. You know the troubles: timesheets mysteriously disappearing and project notes vanishing into thin air.
         %p Forgetfulness has bullied your employees into the back alley. If they manage to escape, vagueness follows closely behind to knife up their project notes. Either way, your billable hours seep away and desperation ensues.
         %p But, in between your whiskey shots and broken financials, a smoky silhouette of a hunched over character wearing a fedora comes to your door.
         %p Knock, knock. He doesn’t wait for a reply. “I’m the Time Detective, and I’m here to help.”
         %br
-  
+
         %span.arrow.left
           %span.carrot < <
           %span.dot &middot;
-        %span.arrow.right 
+        %span.arrow.right
           %span.dot &middot;
           %span.carrot > >
         %br
@@ -55,19 +55,16 @@
 
       %div.span4#private_eye
         %div.row.element-border#contact
-          %br
-          %br
-          %p Our private eye investigation can recover valuable billables for your company at a mere $300 per month. 
+          %p Our private eye investigation can recover valuable billables for your company at a mere $300 per month.
           %p.small
-            Contact us at: hello@thirdprestige.com or
+            Contact us at
+            = mail_to 'hello@thirdprestige.com', 'hello@thirdprestige.com', encode: :hex
+            or
             %strong 512.394.4105
-            to learn more about Time Detective today. 
-          %br
-          %br
-        %br
-    
-        %div.row.element-border#portrait
-      
+            to learn more about Time Detective today.
+
+        / %div.row.element-border#portrait
+
     -#%div.row.copyright.align-center
       %br
       &copy; 2013 Third Prestige LLC la la dandelions bird
