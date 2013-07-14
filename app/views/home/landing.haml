@@ -46,7 +46,7 @@
 
           .panel
 
-            = simple_format block.content
+            = simple_format block.content.try(:html_safe)
 
 
         #arrows
