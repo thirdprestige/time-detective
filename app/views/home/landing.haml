@@ -5,6 +5,8 @@
       %div.row
         %div.span12
           %p Sign up to be notified when we launch
+          // TODO
+          // use WUFOO here
           %form.form-inline
             %label
               Name
@@ -38,16 +40,12 @@
         %hr
         %br
 
-        .panel
+        - Block.all.each do |block|
 
-          %p first
+          .panel
 
-        .panel
-          %p second
+            = simple_format block.content
 
-        .panel
-
-          %p third
 
         #arrows
           %span.arrow.left
