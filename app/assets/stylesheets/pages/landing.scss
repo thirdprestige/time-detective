@@ -89,6 +89,8 @@ html, body {
   }
 
   #content {
+    @include transition(height 0.3s linear);
+
     background-color: rgba(0, 0, 0, 0.8);
     color: #d1c8c8;
     padding: 6px 36px;

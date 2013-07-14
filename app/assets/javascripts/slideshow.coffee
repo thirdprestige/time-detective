@@ -13,10 +13,10 @@ $(document).ready ->
       return if $(@).hasClass('left')  unless panel.prev('.panel').length > 0
       return if $(@).hasClass('right') unless panel.next('.panel').length > 0
 
-      panel.fadeOut =>
+      panel.fadeOut 900, =>
         if $(@).hasClass('left')
-          panel.prev().fadeIn()
+          panel.prev().fadeIn(900)
         else
-          panel.next().fadeIn()
+          panel.next().fadeIn(900)
 
   , 700
