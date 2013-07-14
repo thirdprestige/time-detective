@@ -1,10 +1,13 @@
 source 'https://rubygems.org'
 
 gem 'aasm'
+gem 'bootstrap-wysihtml5-rails'
 gem 'bourbon', git: 'https://github.com/thoughtbot/bourbon.git'
 gem 'devise'
 gem 'jquery-rails'
 gem 'haml'
+gem 'omniauth-google-apps'
+gem 'omniauth'
 gem 'pg'
 gem 'rails_admin'
 gem 'rails', '~> 4.0'
