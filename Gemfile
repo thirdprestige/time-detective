@@ -12,6 +12,7 @@ gem 'omniauth'
 gem 'pg'
 gem 'rails_admin'
 gem 'rails', '~> 4.0'
+gem 'sidekiq'
 gem 'turbolinks'
 gem 'unicorn'
 
