@@ -3,6 +3,8 @@ RailsAdmin.config do |config|
 
   config.current_user_method { current_admin } # auto-generated
 
+  config.included_models = [Block]
+
   config.model Block do
     list do
       field :content
