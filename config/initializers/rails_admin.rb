@@ -9,7 +9,7 @@ RailsAdmin.config do |config|
     end
 
     edit do
-      field :content, :wysihtml5
+      field :content #, :wysihtml5
       field :position
     end
   end
