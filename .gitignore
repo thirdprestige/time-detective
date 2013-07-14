@@ -21,4 +21,3 @@ config/database.yml
 .rvmrc
 .ruby-gemset
 .ruby-versionbin/
-bin/
