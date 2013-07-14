@@ -9,9 +9,7 @@ RailsAdmin.config do |config|
     end
 
     edit do
-      field :content do
-        bootstrap_wysihtml5 true
-      end
+      field :content, :wysihtml5
       field :position
     end
   end
