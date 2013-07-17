@@ -2,27 +2,24 @@
 
 %div.overlay
 
-  %div.row#sign_up
+  %div.row#sign_up  
     %div.container.align-center
       %div.row
         %div.span12
           %p Sign up to be notified when we launch
-          // TODO
-          // use WUFOO here
-          :erb
-            <form id="form5" name="form5" class="wufoo topLabel page1 form-inline" autocomplete="off" enctype="multipart/form-data" method="post" novalidate action="http://thirdprestige.wufoo.com/embed/s7x1s7/#public">
-              <div>
-                <label for="Field1">Name</label>
-                <input id="Field1" name="Field1" type="email" spellcheck="false" class="field text medium inputLarge" value="" maxlength="255" tabindex="1" onkeyup="handleInput(this);" onchange="handleInput(this);" />
-
-                <label for="Field12">Email</label>
-                <input id="Field12" name="Field12" type="text" class="field text medium inputLarge" value="" maxlength="255" tabindex="2" onkeyup="handleInput(this); " onchange="handleInput(this);" />
-
-                <input id="saveForm" name="saveForm" class="btTxt submit"
-                    type="submit" value="Submit" onmousedown="doSubmitEvents();" />
-
-              </div>
-            </form>
+          %form#form5.wufoo.topLabel.page.form-inline{:action => "https://thirdprestige.wufoo.com/forms/s7x1s7/#public", :autocomplete => "off", :enctype => "multipart/form-data", :method => "post", :name => "form5", :novalidate => ""}
+            %label#title12.desc{:for => "Field12"}
+              Name
+              %input#Field12.input-large{:maxlength => "255", :name => "Field12", :onkeyup => "", :tabindex => "1", :type => "text", :value => ""}
+            %label#title1.desc{:for => "Field1"}
+              Email
+              %input#Field1.input-large{:maxlength => "255", :name => "Field1", :spellcheck => "false", :tabindex => "2", :type => "email", :value => ""}
+            %button.btn{:type => "submit", :name => "saveForm", :value => "Submit"}
+              %p submit
+            %span.hide
+              %label{:for => "comment"} Do Not Fill This Out
+              %textarea#comment{:cols => "1", :name => "comment", :rows => "1"}
+              %input#idstamp{:name => "idstamp", :type => "hidden", :value => "B8IKAyI1eq/xex3/8HHp3fdOtTG8hwcyFctTZwsuM7g="}
 
 
   #main.container

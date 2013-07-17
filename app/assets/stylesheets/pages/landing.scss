@@ -51,7 +51,8 @@ html, body {
       }
 
       input {
-        width: 170px;
+        outline: none !important;
+        width: 160px;
       }
     }
 
@@ -94,7 +95,7 @@ html, body {
     background-color: rgba(0, 0, 0, 0.8);
     color: #d1c8c8;
     padding: 6px 36px;
-    width: 500px;
+    width: 499px;
 
     h2 {
       color: #c4bfbf;
