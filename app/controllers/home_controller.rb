@@ -8,4 +8,9 @@ class HomeController < ApplicationController
     @title    = "Detective"
     @body_id  = "landing"
   end
+  
+  def mobile
+    @title    = "Detective"
+    @body_id  = "mobile"
+  end
 end

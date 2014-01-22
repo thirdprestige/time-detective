@@ -1,0 +1,270 @@
+body#mobile {
+  background-size: auto 35em;
+  background-position: -31.5em bottom;
+  min-height: 45em;
+  width: 568px;
+  
+  h1 {
+    color: #555;
+    font-family: 'Yasashii_B';
+    font-size: 14px;
+    line-height: 2;
+    margin: 20px 0 0 10px;
+    visibility: hidden;
+  }
+  
+  .container-fluid {
+    padding: 0;
+    
+    &.space {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  
+  .table-cell {
+    display: table-cell;
+    float: none;
+    vertical-align: bottom;
+  }
+  
+  img.icon {
+    float: left;
+    height: 38px;
+    padding: 0 10px 0 5px;
+    width: 38px;
+  }
+  
+  .small {
+    display: inline-block;
+    font-size: 10px;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+  .currency {
+    display: block;
+    font-family: 'Yasashii_R';
+    font-size: 25px;
+  }
+  
+  .hero {
+    background: rgba(255, 255, 255, 0.1);
+    
+    .currency {
+      line-height: 1.4;
+    }
+    
+    .dynamic {
+      padding-left: 10px;
+      
+      .currency {
+        color: #fff;
+        font-size: 3.6em;
+        letter-spacing: 1px;
+      }
+      
+      p {
+        color: #875987;
+        font-size: 15px;
+      }
+    }
+    .stopWatch {
+      background: url(/assets/library/solid-watch.png);
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+      color: #999;
+      height: 2em;
+      margin-top: -2em;
+      padding: 4em 1em 4em 1.9em;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      width: 6em;
+      
+      .currency {
+        color: #bbb;
+      }
+      
+      .small {
+        color: #aaa;
+        font-size: 9px;
+        font-weight: normal;
+      }
+    }
+  }
+  
+  #navigation {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    height: 45px;
+    width: 3em;
+    
+    .btn-nav {
+      background: #777;
+      border-radius: 10px;
+      cursor: pointer;
+      float: left;
+      height: 0.75em;
+      margin: 1em 5px;
+      width: 0.75em;
+      
+      &.active {
+        background: #eee;
+        cursor: inherit;
+      }
+    }
+  }
+  
+  .full-list {
+    border-top: solid 1px #fff;
+    display: none;
+    height: auto;
+    margin-bottom: 8em;
+    margin-left: -999px;
+    position: relative;
+    width: 568px;
+    
+    &.active {
+      display: inherit;
+      margin-left: 0;
+    }
+    
+    .entry {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-bottom: solid 1px #bbb;
+      color: #ddd;
+      padding: 13px 0;
+      
+      .title {
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 600;
+      }
+      
+      .currency {
+        color: #fff;
+        line-height: 1.5;
+        padding-right: 5px;
+        text-align: right;
+      }
+      
+      .after {
+        height: 5em;
+        margin-top: -1em;
+        position: absolute;
+        width: 100%;
+      }
+      
+      &.unread {
+        background: rgba(100, 0, 100, 0.1);
+      }
+    }
+    
+    &:before {
+      background-attachment: fixed;
+      background-image: url(/assets/pages/landing/background.jpg);
+      background-position: -31.5em bottom;
+      background-repeat: no-repeat;
+      background-size: auto 35em;
+      bottom: 0;
+      content: "";
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      
+      filter: blur(2px);
+      -webkit-filter: blur(2px);
+      -moz-filter: blur(2px);
+      -o-filter: blur(2px);
+      -ms-filter: blur(2px);
+    }
+    
+    * {
+      filter: blur(0px);
+      -webkit-filter: blur(0px);
+      -moz-filter: blur(0px);
+      -o-filter: blur(0px);
+      -ms-filter: blur(0px);
+    }
+  }
+  
+  .archive-msg {
+    background: rgba(30, 0, 30, 0.7);
+    bottom: 0;
+    display: none;
+    padding: 14px 0;
+    position: fixed;
+    
+    .msg {
+      font-family: 'Yasashii_R';
+      font-size: 20px;
+      font-weight: bold;
+      padding-left: 20px;
+    }
+    
+    .btn-undo {
+      cursor: pointer;
+      
+      p {
+        display: block;
+        font-style: italic;
+        margin: 0 3.3em 0 0;
+        text-align: right;
+      }
+      
+      img {
+        bottom: 9px;
+        display: block;
+        float: right;
+        height: 25px;
+        margin-top: -10px;
+        position: absolute;
+        right: 0px;
+        width: 25px;
+      }
+    }
+    
+    * {
+      min-height: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) { 
+  body#mobile, .full-list {
+    max-width: 320px;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 568px) {
+  body#mobile {
+    max-width: 568px;
+    
+    .hero {
+      .dynamic * {
+        margin-left: 12px;
+      }
+      .stopWatch {
+        right: 1em;
+      }
+    }
+    
+    .full-list {
+      img.icon {
+        margin: 0 1em;
+      }
+      
+      .currency {
+        margin-right: 1em;
+      }
+    }
+    
+    .archive-msg .msg {
+      padding-left: 20px;
+    }
+  }
+}

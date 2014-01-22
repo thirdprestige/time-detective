@@ -1,0 +1,144 @@
+.container-fluid.space
+
+.container-fluid
+  .row-fluid
+    .span12
+      %h1 Time Detective
+
+  .row-fluid.hero
+    .span12.dynamic
+      .currency $400
+      %p Recovered This Week
+    .stopWatch
+      .currency $300
+      .small Estimated Pending This Week
+      
+  #navigation
+    .btn-nav.nav-page_1.active
+    .btn-nav.nav-page_2
+      
+      
+  #entry-list_1.full-list.active
+    .row-fluid.entry.slide1.unread
+      .span9
+        %img.icon
+        .title Franz Kafka
+        %br
+        .small 20 minutes ago
+      .span3
+        .currency $150
+      .after
+    .row-fluid.entry.slide2.unread
+      .span9
+        %img.icon
+        .title Jean-Baptiste Moliére
+        %br
+        .small 1 hour ago
+      .span3
+        .currency $85
+      .after
+    .row-fluid.entry.slide3
+      .span9
+        %img.icon
+        .title Samuel Beckett
+        %br
+        .small 3 days ago
+      .span3
+        .currency $55
+      .after
+    .row-fluid.entry.slide4
+      .span9
+        %img.icon
+        .title Victor Hugo
+        %br
+        .small 2 weeks ago
+      .span3
+        .currency $10
+      .after
+      
+  #entry-list_2.full-list
+    .row-fluid.entry.slide1.unread
+      .span9
+        %img.icon
+        .title Project 1
+        %br
+        .small 20 minutes ago
+      .span3
+        .currency $150
+      .after
+    .row-fluid.entry.slide2.unread
+      .span9
+        %img.icon
+        .title Project 2
+        %br
+        .small 1 hour ago
+      .span3
+        .currency $85
+      .after
+    .row-fluid.entry.slide3
+      .span9
+        %img.icon
+        .title Project 3
+        %br
+        .small 3 days ago
+      .span3
+        .currency $55
+      .after
+    .row-fluid.entry.slide4
+      .span9
+        %img.icon
+        .title Project 4
+        %br
+        .small 2 weeks ago
+      .span3
+        .currency $10
+      .after
+        
+  .row-fluid.archive-msg
+    .span9.msg Archived
+    .span3.btn-undo
+      %p Undo
+      = image_tag('library/return.png', :class => 'icon')
+      
+:javascript
+  $(function(){
+    var currentArchive = '';
+  
+    $('div.entry .after').on('swipeleft', swipeleftHandler_entry);
+    $('.container-fluid.space').on('swipeleft', swipeleftHandler_list);
+    $('.container-fluid.space').on('swiperight', swiperightHandler_list);
+    $('.btn-nav').not('active').on('click', function() {
+      if ($('.btn-nav').first().attr('class').split(' ')[2] == 'active') {
+        swipeleftHandler_list();
+      }
+      else {
+        swiperightHandler_list();
+      }
+    });
+    $('.btn-undo').click(function() { undoArchive(); });
+
+    function undoArchive() {
+      console.log(currentArchive);
+      $('.full-list.active').children(currentArchive).show().animate({ marginLeft: '0px' }, 1000 );
+      $('.archive-msg').fadeOut();
+    }
+    function swipeleftHandler_entry( event ){
+      $(event.target).parent('div.entry').animate({ marginLeft: '-999px' }, 'fast' ).promise().done(function(){
+        currentArchive = '.' + $(event.target).parent('div.entry').attr('class').split(' ')[2];
+        $(event.target).parent('div.entry').hide();
+        $('.archive-msg').fadeIn();
+      });
+    }
+    function swipeleftHandler_list( event ){
+      if ($('.btn-nav').first().attr('class').split(' ')[2] == 'active') {
+        $('.full-list.active').animate({ marginLeft: '999px' }, 1000 ).promise().done(function(){ $(this).removeClass('active').siblings('.full-list').addClass('active').animate({ marginLeft: '0px' }, 1000 ) });
+        $('.btn-nav.active').removeClass('active').siblings().addClass('active');
+      }
+    }
+    function swiperightHandler_list( event ){
+      if ($('.btn-nav').last().attr('class').split(' ')[2] == 'active') {
+        $('.full-list.active').animate({ marginLeft: '-999px' }, 1000 ).promise().done(function(){ $(this).removeClass('active').siblings('.full-list').addClass('active').animate({ marginLeft: '0px' }, 1000 ); });
+        $('.btn-nav.active').removeClass('active').siblings().addClass('active');
+      }
+    }
+  });
