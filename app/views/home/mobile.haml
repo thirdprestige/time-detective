@@ -21,7 +21,7 @@
   #entry-list_1.full-list.active
     .row-fluid.entry.slide1.unread
       .span9
-        %img.icon
+        = image_tag('library/stock1.jpg', :ref => '', :class => 'icon')
         .title Franz Kafka
         %br
         .small 20 minutes ago
@@ -30,7 +30,7 @@
       .after
     .row-fluid.entry.slide2.unread
       .span9
-        %img.icon
+        = image_tag('library/stock2.jpg', :ref => '', :class => 'icon')
         .title Jean-Baptiste Moliére
         %br
         .small 1 hour ago
@@ -39,7 +39,7 @@
       .after
     .row-fluid.entry.slide3
       .span9
-        %img.icon
+        = image_tag('library/stock3.jpg', :ref => '', :class => 'icon')
         .title Samuel Beckett
         %br
         .small 3 days ago
@@ -48,7 +48,7 @@
       .after
     .row-fluid.entry.slide4
       .span9
-        %img.icon
+        = image_tag('library/stock4.jpg', :ref => '', :class => 'icon')
         .title Victor Hugo
         %br
         .small 2 weeks ago
@@ -56,10 +56,10 @@
         .currency $10
       .after
       
-  #entry-list_2.full-list
+  #entry-list_2.full-list{:style => 'margin-left: -999px'}
     .row-fluid.entry.slide1.unread
       .span9
-        %img.icon
+        = image_tag('library/stock3.jpg', :ref => '', :class => 'icon')
         .title Project 1
         %br
         .small 20 minutes ago
@@ -68,7 +68,7 @@
       .after
     .row-fluid.entry.slide2.unread
       .span9
-        %img.icon
+        = image_tag('library/stock2.jpg', :ref => '', :class => 'icon')
         .title Project 2
         %br
         .small 1 hour ago
@@ -77,7 +77,7 @@
       .after
     .row-fluid.entry.slide3
       .span9
-        %img.icon
+        = image_tag('library/stock1.jpg', :ref => '', :class => 'icon')
         .title Project 3
         %br
         .small 3 days ago
@@ -86,7 +86,7 @@
       .after
     .row-fluid.entry.slide4
       .span9
-        %img.icon
+        = image_tag('library/stock4.jpg', :ref => '', :class => 'icon')
         .title Project 4
         %br
         .small 2 weeks ago
@@ -123,22 +123,26 @@
       $('.archive-msg').fadeOut();
     }
     function swipeleftHandler_entry( event ){
-      $(event.target).parent('div.entry').animate({ marginLeft: '-999px' }, 'fast' ).promise().done(function(){
-        currentArchive = '.' + $(event.target).parent('div.entry').attr('class').split(' ')[2];
-        $(event.target).parent('div.entry').hide();
-        $('.archive-msg').fadeIn();
+      $(event.target).on( "vmouseup", function() {
+        $(event.target).parent('div.entry').animate({ marginLeft: '-999px' }, '1000' ).promise().done(function(){
+          currentArchive = '.' + $(event.target).parent('div.entry').attr('class').split(' ')[2];
+          $(event.target).parent('div.entry').hide();
+          $('.archive-msg').fadeIn();
+        });
       });
     }
     function swipeleftHandler_list( event ){
       if ($('.btn-nav').first().attr('class').split(' ')[2] == 'active') {
         $('.full-list.active').animate({ marginLeft: '999px' }, 1000 ).promise().done(function(){ $(this).removeClass('active').siblings('.full-list').addClass('active').animate({ marginLeft: '0px' }, 1000 ) });
         $('.btn-nav.active').removeClass('active').siblings().addClass('active');
+        $('.archive-msg').fadeOut();
       }
     }
     function swiperightHandler_list( event ){
       if ($('.btn-nav').last().attr('class').split(' ')[2] == 'active') {
         $('.full-list.active').animate({ marginLeft: '-999px' }, 1000 ).promise().done(function(){ $(this).removeClass('active').siblings('.full-list').addClass('active').animate({ marginLeft: '0px' }, 1000 ); });
         $('.btn-nav.active').removeClass('active').siblings().addClass('active');
+        $('.archive-msg').fadeOut();
       }
     }
   });

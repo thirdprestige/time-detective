@@ -17,7 +17,7 @@ body#mobile {
     padding: 0;
     
     &.space {
-      position: absolute;
+      position: fixed;
       height: 100%;
       width: 100%;
     }

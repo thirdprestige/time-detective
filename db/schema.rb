@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20130714212846) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "confirmed_at"
   end
 
   create_table "accounts", force: true do |t|
@@ -54,19 +55,30 @@ ActiveRecord::Schema.define(version: 20130714212846) do
     t.datetime "updated_at"
   end
 
+  create_table "integrations", force: true do |t|
+    t.integer  "account_id"
+    t.string   "type"
+    t.text     "secret_encrypted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "project_activities", force: true do |t|
     t.integer  "project_id",            null: false
     t.integer  "project_time_entry_id"
     t.integer  "worker_id",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
+    t.text     "external_identifier"
   end
 
   create_table "project_identities", force: true do |t|
-    t.integer  "project_id", null: false
-    t.string   "identifier", null: false
+    t.integer  "project_id",  null: false
+    t.string   "identifier",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "integration"
   end
 
   create_table "project_time_entries", force: true do |t|
@@ -101,11 +113,16 @@ ActiveRecord::Schema.define(version: 20130714212846) do
   add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                              default: "", null: false
+    t.string   "encrypted_password",     limit: 128, default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                      default: 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
